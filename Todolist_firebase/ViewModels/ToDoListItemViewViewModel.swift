@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+
+//ViewModels for single todolist item view(each row in item list)
+class ToDoListItemViewViewModel:ObservableObject{
+    init(){
+        
+    }
+    func toggleIsDone(item: ToDoLIstItem){
+        
+    }
+}

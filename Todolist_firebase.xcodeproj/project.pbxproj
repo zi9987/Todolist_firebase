@@ -131,11 +131,11 @@
 				D01243382BE69CE800C4546B /* MainView.swift */,
 				D01243572BE75CFF00C4546B /* ProfileView.swift */,
 				D01243592BE75D3600C4546B /* ToDoListView.swift */,
+				D01243612BE75DE400C4546B /* ToDoListItemView.swift */,
 				D012435B2BE75D4E00C4546B /* NewItemView.swift */,
 				D012435D2BE75D6600C4546B /* LoginView.swift */,
 				D01243772BE7933500C4546B /* TLButton.swift */,
 				D012435F2BE75D7A00C4546B /* RegisterView.swift */,
-				D01243612BE75DE400C4546B /* ToDoListItemView.swift */,
 				D01243752BE7622400C4546B /* HeaderView.swift */,
 			);
 			path = Views;
