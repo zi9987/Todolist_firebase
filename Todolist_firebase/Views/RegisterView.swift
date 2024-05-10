@@ -22,7 +22,7 @@ struct RegisterView: View {
                     .textFieldStyle(DefaultTextFieldStyle())
                     .autocapitalization(.none)
                     .autocorrectionDisabled()
-                SecureField("Password", text: $viewModel.password)
+                SecureField("Password(>6 charcacter)", text: $viewModel.password)
                     .textFieldStyle(DefaultTextFieldStyle())
                 TLButton(title: "Create Account", background: .green){
                     //Action registration

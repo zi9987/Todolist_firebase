@@ -6,7 +6,7 @@
 //
 import FirebaseAuth
 import Foundation
-
+import UserNotifications
 class MainViewViewModel:ObservableObject{
     @Published var currentUserId:String = ""
     private var handler:AuthStateDidChangeListenerHandle?
@@ -21,5 +21,14 @@ class MainViewViewModel:ObservableObject{
         public var isSignedIn:Bool{
             return Auth.auth().currentUser != nil
         }
+    func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Notification permission granted.")
+            } else if let error = error {
+                print("Notification permission error: \(error)")
+            }
+        }
+    }
     
 }

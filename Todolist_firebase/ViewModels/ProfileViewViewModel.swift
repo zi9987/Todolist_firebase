@@ -9,9 +9,13 @@ import FirebaseFirestore
 import Foundation
 
 class ProfileViewViewModel:ObservableObject{
-    init(){
-        
+    
+    private let userId:String
+    init(userId: String, user: User? = nil) {
+        self.userId = userId
+        self.user = user
     }
+   
     @Published var user:User? = nil
     func fetchUser(){
         guard let userId = Auth.auth().currentUser?.uid else{
@@ -37,5 +41,18 @@ class ProfileViewViewModel:ObservableObject{
             print(error)
         }
         
+    }
+    func deleteUserAccount() {
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+            if let error = error {
+                // Handle the error if deletion fails
+                print("Error deleting account: \(error.localizedDescription)")
+            } else {
+                // Handle the successful deletion, maybe navigate to a login screen
+                print("Account successfully deleted")
+            }
+        }
     }
 }

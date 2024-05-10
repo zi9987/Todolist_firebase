@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var viewModel = ProfileViewViewModel()
+    @StateObject var viewModel = ProfileViewViewModel(userId: "")
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationView{
@@ -20,7 +21,7 @@ struct ProfileView: View {
                 }
             }
             //Sign out
-           
+            
             .navigationTitle("Profile")
         }
         .onAppear{
@@ -67,9 +68,22 @@ struct ProfileView: View {
         .tint(.red)
         .padding()
         Spacer()
+        Button("Delete Account") {
+            showingAlert = true
+        }
+        .padding()
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text("Confirm Account Deletion"),
+                message: Text("Are you sure you want to delete your account? This action cannot be undone."),
+                primaryButton: .destructive(Text("Delete")) {
+                    viewModel.deleteUserAccount()
+                },
+                secondaryButton: .cancel()
+            )
+        }
     }
 }
-    
     #Preview {
         ProfileView()
     }

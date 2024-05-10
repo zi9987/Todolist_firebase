@@ -29,4 +29,25 @@ class ToDoListItemViewViewModel:ObservableObject{
             .document(itemCopy.id)
             .setData(itemCopy.asDictionary())
     }
+    func scheduleNotification(for item: ToDoLIstItem) {
+        let reminderDate = Date(timeIntervalSince1970: item.dueDate)
+
+        let content = UNMutableNotificationContent()
+        content.title = "Reminder"
+        content.body = "Don't forget: \(item.title)"
+        content.sound = UNNotificationSound.default
+
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminderDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+        let request = UNNotificationRequest(identifier: item.id, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error)")
+            }
+        }
+    }
+
+
 }

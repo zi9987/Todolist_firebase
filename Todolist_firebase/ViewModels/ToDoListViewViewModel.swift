@@ -7,6 +7,9 @@
 import FirebaseFirestore
 import Foundation
 
+
+
+
 //ViewModels for list of items view
 //Primary Tab
 class ToDoListViewViewModel:ObservableObject{
@@ -28,5 +31,6 @@ class ToDoListViewViewModel:ObservableObject{
             .document(id)
             .delete()
     }
+    
    
 }
